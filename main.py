@@ -1,5 +1,4 @@
-import byteplay
-from blocky import parallel_iterators
+from polymer import parallel_iterators
 
 class Iterator(object):
   def __init__(self, internal):

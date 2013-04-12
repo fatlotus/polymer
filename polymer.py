@@ -64,3 +64,4 @@ def parallel_iterators(function):
       result.append((opcode, argument))
   
   function.func_code = result_block.to_code()
+  return function
