@@ -1,9 +1,9 @@
 import byteplay
 
 def parallel_iterators(function):
-  source = byteplay.Code.from_code(main.func_code).code
+  source = byteplay.Code.from_code(function.func_code).code
   
-  result_block = byteplay.Code.from_code(main.func_code)
+  result_block = byteplay.Code.from_code(function.func_code)
   
   result = result_block.code
   result[:] = [ ]
