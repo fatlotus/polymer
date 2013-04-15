@@ -35,9 +35,12 @@ def parallel_iterators(function):
       
       source_lines_break_stuff = [ (x, y) for (x, y) in inside_this_loop if x != byteplay.SetLineno ]
       
-      new_code_block.code = (
+      also_fix_load_fast = [ (byteplay.LOAD_DEREF if x == byteplay.LOAD_FAST else x, y) 
+                              for (x, y) in source_lines_break_stuff ]
+      
+      new_code_block.code[:] = (
         [(byteplay.LOAD_FAST, '__fixme')] +
-        source_lines_break_stuff +
+        also_fix_load_fast +
         [(byteplay.LOAD_CONST, None),
          (byteplay.RETURN_VALUE, None)]
       )
